@@ -6,9 +6,12 @@ class BinarySearchTree:
 
   def depth_first_for_each(self, cb):
     #use Stack
+    #Run cb function on root value
     cb(self.value)
+    #If there is left node, run cb function on the left node
     if self.left:
       self.left.depth_first_for_each(cb)
+    #If there is left node, run cb function on the right node
     if self.right:
       self.right.depth_first_for_each(cb)
 
