@@ -6,7 +6,7 @@ class BinarySearchTree:
 
   def depth_first_for_each(self, cb):
     #use Stack
-    #Run cb function on root value
+    #Run cb function on current node value
     cb(self.value)
     #If there is left node, run cb function on the left node
     if self.left:
@@ -17,7 +17,21 @@ class BinarySearchTree:
 
   def breadth_first_for_each(self, cb):
     #use Queue
-    pass
+    queue = []
+    #first item in queue is root node
+    queue.append(self)
+    #repeat loop when there is item(s) in queue
+    while queue:
+      node = queue.pop(0)
+      #call cb on the value of the node
+      cb(node.value)
+      #if there is a node on the left of current node, add it to queue
+      if (node.left):
+        queue.append(node.left)
+      #if there is a node on the left of current node, add it to queue
+      if (node.right):
+        queue.append(node.right)
+        
 
   def insert(self, value):
     new_tree = BinarySearchTree(value)
