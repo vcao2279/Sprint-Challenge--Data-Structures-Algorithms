@@ -6,14 +6,29 @@ class BinarySearchTree:
 
   def depth_first_for_each(self, cb):
     #use Stack
+    stack = []
+    #first item in stack is root node
+    stack.append(self)
+    #repeat loop when there is item(s) in stack
+    while stack:
+      node = stack.pop()
+      #if there is a node on the right of current node, add it to stack
+      if (node.right):
+        stack.append(node.right)
+        #if there is a node on the left of current node, add it to stack
+      if (node.left):
+        stack.append(node.left)
+      #call cb on the value of the node
+      cb(node.value)
+      
     #Run cb function on current node value
-    cb(self.value)
-    #If there is left node, run cb function on the left node
-    if self.left:
-      self.left.depth_first_for_each(cb)
-    #If there is left node, run cb function on the right node
-    if self.right:
-      self.right.depth_first_for_each(cb)
+    # cb(self.value)
+    # #If there is left node, run cb function on the left node
+    # if self.left:
+    #   self.left.depth_first_for_each(cb)
+    # #If there is left node, run cb function on the right node
+    # if self.right:
+    #   self.right.depth_first_for_each(cb)
 
   def breadth_first_for_each(self, cb):
     #use Queue
